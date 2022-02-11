@@ -97,7 +97,7 @@ const patientTransferDetails = new Schema({
     diagnosis: {
         type: String,
         required: [true, "Tests done so far of transfering patient is required"]
-    },
+    }
 
 })
 
@@ -106,7 +106,4 @@ const patientDetails = mongoose.model("patientDetails", patientDetails);
 const staffDetails = mongoose.model("staffDetails", staffDetails);
 const hospitalDetails = mongoose.model("hospitalDetails", hospitalDetails);
 const patientTransferDetails = mongoose.model("patientTransferDetails", patientTransferDetails);
-module.exports = patientDetails;
-module.exports = staffDetails;
-module.exports = hospitalDetails;
-module.exports = patientTransferDetails;
+module.exports = {patientDetails,staffDetails,hospitalDetails,patientTransferDetails};
