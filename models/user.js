@@ -8,19 +8,19 @@ const patientDetails = new Schema({
     }, 
     age: {
         type: Number,
-        required: [ture, "Age of patient is required"]
+        required: [true, "Age of patient is required"]
     },
     gender: {
         type: String,
-        required: [ture, "Gender of patient is required"]
+        required: [true, "Gender of patient is required"]
     },
     email: {
-        type: Email,
-        required: [ture, "Email of patient is required"]
+        type: String,
+        required: [true, "Email of patient is required"]
     },
     password: {
-        type: password,
-        required: [ture, "Password of patient is required"]
+        type: String,
+        required: [true, "Password of patient is required"]
     },
     diagnosis: {
         type: String,
@@ -35,15 +35,19 @@ const staffDetails = new Schema({
         required: [true, "Staff Member name is required"]
     },
     email: {
-        type: Email,
+        type: String,
         required: [true, "Staff Member email is required"]
+    },
+    role: {
+        type: String,
+        required: [true,"Role of incharge is required"]
     },
     hospitalRegistrationNumber: {
         type: String,
         required: [true, "Staff Member's working hospital number is required"]
     },
     password: {
-        type: password,
+        type: String,
         required: [true, "Staff Member password is required"]
     }
 })
@@ -68,7 +72,7 @@ const hospitalDetails = new Schema({
     },
     hospitalRegistrationNumber: {
         type: String,
-        required: [ture,"Hospital Registration Number is required"]
+        required: [true,"Hospital Registration Number is required"]
     }
 })
 
@@ -79,12 +83,20 @@ const patientTransferDetails = new Schema({
         required: [true, "Name of transfering patient is required"]
     },
     emailOfPatient: {
-        type: Email,
+        type: String,
         required: [true, "Email of transfering patient is required"]
+    },
+    fromName: {
+        type: String,
+        required: [true, "From hospital name of transfering patient is required"]
     },
     fromId: {
         type: String,
         required: [true, "From hospital id of transfering patient is required"]
+    },
+    toName: {
+        type: String,
+        required: [true, "To hospital name of transfering patient is required"]
     },
     toId: {
         type: String,
@@ -102,8 +114,8 @@ const patientTransferDetails = new Schema({
 })
 
 
-const patientDetails = mongoose.model("patientDetails", patientDetails);
-const staffDetails = mongoose.model("staffDetails", staffDetails);
-const hospitalDetails = mongoose.model("hospitalDetails", hospitalDetails);
-const patientTransferDetails = mongoose.model("patientTransferDetails", patientTransferDetails);
-module.exports = {patientDetails,staffDetails,hospitalDetails,patientTransferDetails};
+const PatientDetails = mongoose.model("PatientDetails", patientDetails);
+const StaffDetails = mongoose.model("StaffDetails", staffDetails);
+const HospitalDetails = mongoose.model("HospitalDetails", hospitalDetails);
+const PatientTransferDetails = mongoose.model("PatientTransferDetails", patientTransferDetails);
+module.exports = {PatientDetails,StaffDetails,HospitalDetails,PatientTransferDetails};

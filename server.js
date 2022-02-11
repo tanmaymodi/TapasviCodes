@@ -9,6 +9,7 @@ connectDB();
 var app=express()
 
 var engine = require('consolidate');
+const { patientDetails, PatientDetails } = require("./models/user");
 app.set('views', __dirname + '/views');
 app.engine('html', engine.mustache);
 app.set('view engine', 'html');
@@ -32,11 +33,16 @@ app.post('/upp', async(req,res)=>{
         var age = d['age'];
         var gender = d['gender'];
         var password = d['password'];
+        var remark = d['diagnosis'];
         console.log(name);
         console.log(email);
         console.log(password);
         console.log(age);
         console.log(gender);
+        console.log(remark);
+
+        var insertingObject = new PatientDetails(d)
+        await insertingObject.save();
         return res.redirect('/');
     }
     catch(err){
