@@ -1,0 +1,5 @@
+//installing libraries
+npm i consolidate morgan express mustache nodemon mongodb mongoose
+
+//run project
+npm start
