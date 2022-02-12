@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Register Hospital</h1>
+    <!-- hospital registration form -->
+    <form action="/hospitalSignUp" method="POST">
+        <input type="text" id="name" name="name" placeholder="Nmae of the hospital" required><br>
+        <input type="tel" id="phone" name="phone" placeholder="Contact Number of Hospital" required><br>
+        <input type="email" id="email" name="email" placeholder="Email of Hospital" required><br>
+        <textarea type="text" id="facilities" name="facilities" placeholder="Facilities availabe in Hospital"
+            required></textarea><br>
+        <input type="text" id="address" name="address" placeholder="Address of the hospital" required><br>
+        <input type="text" id="hospitalRegistrationNumber" name="hospitalRegistrationNumber"
+            placeholder="Registered Liscence number of Hospital" required><br>
+        <button type="submit" onsubmit="formSubmit()">Submit</button>
+    </form>
+</body>
+
+</html>

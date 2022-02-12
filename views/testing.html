@@ -3,16 +3,20 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- ajax files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 
 <body>
 
-	<!-- patient sign up -->
-	<!-- <form action="/patientSignUp" method="POST">
+    <!-- patient sign up -->
+    <!-- <form action="/patientSignUp" method="POST">
         <input type="text" id="name" name="name" placeholder="Nmae of patient" required><br>
         <input type="number" id="age" name="age" placeholder="Age of patient" required min="0" max="120" step="1"><br>
         <select id="gender" name="gender" required>
@@ -26,8 +30,8 @@
         <button type="submit">Submit</button>
     </form> -->
 
-	<!-- staff sign up -->
-	<!-- <form action="/staffSignUp" method="POST">
+    <!-- staff sign up -->
+    <!-- <form action="/staffSignUp" method="POST">
         <input type="text" id="name" name="name" placeholder="Nmae of Staff Member" required><br>
         <input type="email" id="email" name="email" placeholder="Email" required><br>
         <input type="text" id="role" name="role" placeholder="Position/Title" required><br>
@@ -37,22 +41,23 @@
         <button type="submit">Submit</button>
     </form> -->
 
-	<!-- hospital registration form -->
-	<!-- <form action="/hospitalSignUp" method="POST">
-		<input type="text" id="name" name="name" placeholder="Nmae of the hospital" required><br>
-		<input type="tel" id="phone" name="phone" placeholder="Contact Number of Hospital" required><br>
-		<input type="email" id="email" name="email" placeholder="Email of Hospital" required><br>
-		<input type="text" id="facilities" name="facilities" placeholder="Facilities availabe in Hospital" required><br>
-		<input type="text" id="address" name="address" placeholder="Address of the hospital" required><br>
-		<input type="text" id="hospitalRegistrationNumber" name="hospitalRegistrationNumber"
-			placeholder="Registered Liscence number of Hospital" required><br>
-		<button type="submit">Submit</button>
-	</form> -->
+    <!-- hospital registration form -->
+    <form>
+        <input type="text" id="name" name="name" placeholder="Nmae of the hospital" required><br>
+        <input type="tel" id="phone" name="phone" placeholder="Contact Number of Hospital" required><br>
+        <input type="email" id="email" name="email" placeholder="Email of Hospital" required><br>
+        <textarea type="text" id="facilities" name="facilities" placeholder="Facilities availabe in Hospital"
+            required></textarea><br>
+        <input type="text" id="address" name="address" placeholder="Address of the hospital" required><br>
+        <input type="text" id="hospitalRegistrationNumber" name="hospitalRegistrationNumber"
+            placeholder="Registered Liscence number of Hospital" required><br>
+        <button type="submit" onclick="formSubmit()">Submit</button>
+    </form>
 
 
 
-	<!-- patient transfer form -->
-	<!-- <form action="/patientTransferForm" method="POST">
+    <!-- patient transfer form -->
+    <!-- <form action="/patientTransferForm" method="POST">
 		<input type="text" id="name" name="name" placeholder="Nmae of Patient" required><br>
 		<input type="email" id="emailOfPatient" name="emailOfPatient" placeholder="Email of Patient" required><br>
 		<input type="text" id="fromName" name="fromName" placeholder="Name of Current Hospital" required><br>
@@ -65,6 +70,18 @@
 	</form> -->
 
 
+
+    <script>
+        function formSubmit() {
+            $.post({
+                url: '/hospitalSignUp',
+                success: function (res) {
+                    var status = res['message'];
+                    window.alert(status);
+                }
+            })
+        }
+    </script>
 
 </body>
 

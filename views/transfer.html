@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Transfer Patient</h1>
+
+    <!-- patient transfer form -->
+    <form action="/patientTransferForm" method="POST">
+        <input type="text" id="name" name="name" placeholder="Nmae of Patient" required><br>
+        <input type="email" id="emailOfPatient" name="emailOfPatient" placeholder="Email of Patient" required><br>
+        <input type="text" id="fromName" name="fromName" placeholder="Name of Current Hospital" required><br>
+        <input type="text" id="fromId" name="fromId" placeholder="Registration Number of Current Hospital" required><br>
+        <input type="text" id="toName" name="toName" placeholder="Name of Transfering Hospital" required><br>
+        <input type="text" id="toId" name="toId" placeholder="Registration Number of Transfering Hospital" required><br>
+        <input type="date" id="date" name="date"><br>
+        <textarea type="text" id="diagnosis" name="diagnosis" placeholder="Reports of patient" required></textarea><br>
+        <button type="submit">Submit</button>
+    </form>
+    <br>
+
+</body>
+
+</html>
