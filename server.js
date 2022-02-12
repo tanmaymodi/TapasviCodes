@@ -9,7 +9,7 @@ connectDB();
 var app=express()
 
 var engine = require('consolidate');
-const { patientDetails, PatientDetails } = require("./models/user");
+const { patientDetails, PatientDetails, StaffDetails, HospitalDetails, PatientTransferDetails } = require("./models/user");
 app.set('views', __dirname + '/views');
 app.engine('html', engine.mustache);
 app.set('view engine', 'html');
@@ -24,23 +24,10 @@ app.use(bodyParser.urlencoded({
 app.use('/', require('./routes/index'));
 
 
-app.post('/upp', async(req,res)=>{
+app.post('/patientSignUp', async(req,res)=>{
     try{
         console.log(req.body);
         var d = req.body;
-        var name = d['name'];
-        var email = d['email'];
-        var age = d['age'];
-        var gender = d['gender'];
-        var password = d['password'];
-        var remark = d['diagnosis'];
-        console.log(name);
-        console.log(email);
-        console.log(password);
-        console.log(age);
-        console.log(gender);
-        console.log(remark);
-
         var insertingObject = new PatientDetails(d)
         await insertingObject.save();
         return res.redirect('/');
@@ -49,6 +36,52 @@ app.post('/upp', async(req,res)=>{
         console.log("Err -- ", err);
         res.sendFile(__dirname+'/views/index.html' )
         return;
+    }
+})
+
+app.post('/staffSignUp',async(req,res)=>{
+    try{
+        console.log(req.body);
+        var d = req.body;
+        var insertingObject = new StaffDetails(d);
+        await insertingObject.save();   
+        return res.redirect('/');
+    }
+    catch(err){
+            console.log("Err -- ", err);
+            res.sendFile(__dirname+'/views/index.html' )
+            return;
+    }
+})
+
+app.post('/hospitalSignUp',async(req,res)=>{
+    try{
+        console.log(req.body);
+        var d = req.body;
+        var insertingObject = new HospitalDetails(d);
+        await insertingObject.save();   
+        return res.redirect('/');
+    }
+    catch(err){
+            console.log("Err -- ", err);
+            res.sendFile(__dirname+'/views/index.html' )
+            return;
+    }
+})
+
+
+app.post('/patientTransferForm',async(req,res)=>{
+    try{
+        console.log(req.body);
+        var d = req.body;
+        var insertingObject = new PatientTransferDetails(d);
+        await insertingObject.save();   
+        return res.redirect('/');
+    }
+    catch(err){
+            console.log("Err -- ", err);
+            res.sendFile(__dirname+'/views/index.html' )
+            return;
     }
 })
 

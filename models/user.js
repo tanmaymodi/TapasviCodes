@@ -28,7 +28,7 @@ const patientDetails = new Schema({
     }
 })
 
-//Hostial Staff Details
+//Hospitial Staff Details
 const staffDetails = new Schema({
     name: {
         type: String,
@@ -58,6 +58,14 @@ const hospitalDetails = new Schema({
         type: String,
         required: [true,"Name of the hospital is required"]
     },
+    phone:{
+        type: Number,
+        required: [true,"Phone Number of Hospital Required"]
+    },
+    email:{
+        type: String,
+        required: [true,"Email of hospital is requierd"]
+    },
     facilities: {
         type: String,
         required: [true,"Facilities of the hospital is required"]
@@ -65,10 +73,6 @@ const hospitalDetails = new Schema({
     address: {
         type: String,
         required: [true,"Address of the hospital is required"]
-    },
-    numberOfBeds: {
-        type: Number,
-        required: [true,"Number of the hospital is required"]
     },
     hospitalRegistrationNumber: {
         type: String,
