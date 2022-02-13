@@ -93,8 +93,8 @@ app.post('/hospitalSignUp', async(req, res) => {
         var d = req.body;
         var hid = d['hospitalRegistrationNumber'];
         var id = d['email'];
-        const r1 = await HospitalDetails.findOne({ hid: hid });
-        const r2 = await HospitalDetails.findOne({ id: id });
+        const r1 = await HospitalDetails.findOne({ hospitalRegistrationNumber: hid });
+        const r2 = await HospitalDetails.findOne({ email: id });
         if (r2) {
             res.send({ message: "email already exits" });
         } else if (r1) {
@@ -150,11 +150,11 @@ app.post('/patientSignIn', async(req, res) => {
         var d = req.body;
         console.log(d);
         const result = await PatientDetails.findOne(d);
-        const rec = await PatientTransferDetails.findOne({ email: d['email'] });
+        const rec = await PatientTransferDetails.findOne({ emailOfPatient: d['email'] });
 
-
-        console.log(result);
-        if (result || rec) {
+        console.log("pat sign in");
+        console.log(result, rec);
+        if (result !== null || rec !== null) {
             res.send({ message: result, rec: rec, success: true });
         } else {
             res.send({ message: "Invalid email or password", success: false });

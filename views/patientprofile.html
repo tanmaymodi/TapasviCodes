@@ -35,6 +35,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid;
+        }
+
+        td {
+            padding: 10px 5px 10px 5px;
+        }
+    </style>
 </head>
 
 <body>
@@ -57,10 +68,9 @@
 
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                    <li><a class="nav-link scrollto" href="#about">About</a></li>
-                    <li><a class="nav-link scrollto" href="#services">Services</a></li>
+                    <li><a class="nav-link scrollto active" href="/">Home</a></li>
 
+                    <li><a class="nav-link scrollto" href="/Shift-Patient">SHift-Paitent</a></li>
                     <li class="dropdown"><a href="#"><span>Log In</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="/patient-profile">Patient Log In</a></li>
@@ -79,8 +89,7 @@
             </nav>
             <!-- .navbar -->
 
-            <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline">Make an</span>
-                Appointment</a>
+
 
         </div>
     </header>
@@ -173,45 +182,56 @@
                     var status = res['message'];
                     console.log(status);
                     var s = " ";
-                    if (res['status'] === false) {
-                        console.log(status);
+                    if (res['success'] === false) {
+                        console.log("sdcx", status);
                         window.alert(status);
                         document.getElementById('profile').innerHTML = "";
-                        return;
-                    }
-                    s += "<center>";
-                    if (status) {
-                        s += "<h3>" + "Patient details" + "</h3>"
-                        s += status['name'];
-                        s += "<br />";
-                        s += status['email'];
-                        s += "<br />";
-                        s += status['hid'];
-                        s += "<br />";
-                        s += status['age'];
-                        s += "<br />";
-                        s += status['gender'];
-                        s += "<br />";
-                        s += status['diagnosis'];
-                        s += "<br />";
+
+                    } else {
+                        console.log("zzzz");
+                        var s = "<center>";
+
+
+                        if (status) {
+                            s += "<h3>" + "Patient details" + "</h3>"
+                            s += "<table border='1px solid'>";
+                            s += "<tr><td>Name</td><td>" + status['name'] + "</td></tr>";
+
+                            s += "<tr><td>Email</td><td>" + status['email'] + "</td></tr>";
+                            s += "\n";
+                            s += status['hid'] === undefined ? "" : "<tr><td>Hospital ID</td><td>" + status[
+                                'hid'] + "</td></tr>";
+                            s += "\n";
+                            s += status['age'] === undefined ? "" : "<tr><td>Age</td><td>" + status['age'] +
+                                "</td></tr>";
+                            s += "\n";
+                            s += status['gender'] === undefined ? "" : "<tr><td>Gender</td><td>" + status[
+                                'gender'] + "</td></tr>";
+                            s += "\n";
+                            s += status['diagnosis'] === undefined ? "" : "<tr><td>Diagnosis</td><td>" +
+                                status[
+                                    'diagnosis'] + "</td></tr>";
+                            s += "</table><br />";
+
+                        }
+
+                        if (res['rec']) {
+                            status = res['rec'];
+                            s += "<h3>" + "Transfer details" + "</h3>"
+                            s += "<table border='1px solid'>";
+                            s += "<tr><td>From</td><td>" + status['fromId'] + "</td></tr>";
+
+                            s += "<tr><td>To</td><td>" + status['toId'] + "</td></tr>";
+                            s += "<tr><td>Date</td><td>" + status['date'].split('T')[0] + "</td></tr>";
+
+                            s += "<tr><td>Diagnosis</td><td>" + status['diagnosis'] + "</td></tr>";
+                            s += "</table>"
+                        }
+                        s += "</center>";
+                        document.getElementById('profile').innerHTML = s;
                     }
 
-                    if (res['rec']) {
-                        status = res['rec'];
-                        s += "<h3>" + "Transfer details" + "</h3>"
 
-                        s += status['fromId'];
-                        s += "<br />";
-                        s += status['toId'];
-                        s += "<br />";
-                        s += status['date'];
-                        s += "<br />";
-                        s += status['diagnosis'];
-                        s += "<br />";
-                    }
-
-                    s += "</center>";
-                    document.getElementById('profile').innerHTML = s;
                 }
             })
         }

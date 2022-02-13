@@ -35,6 +35,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid;
+        }
+
+        td {
+            padding: 10px 5px 10px 5px;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -51,15 +63,15 @@
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center">
 
-            <h1 class="logo me-auto"><a href="index.html">CarryLab</a></h1>
+            <h1 class="logo me-auto"><a href="/">CarryLab</a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                    <li><a class="nav-link scrollto" href="#about">About</a></li>
-                    <li><a class="nav-link scrollto" href="#services">Services</a></li>
+                    <li><a class="nav-link scrollto active" href="/">Home</a></li>
+
+                    <li><a class="nav-link scrollto" href="/Shift-Patient">SHift-Paitent</a></li>
                     <li class="dropdown"><a href="#"><span>Log In</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="/patient-profile">Patient Log In</a></li>
@@ -78,8 +90,7 @@
             </nav>
             <!-- .navbar -->
 
-            <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline">Make an</span>
-                Appointment</a>
+
 
         </div>
     </header>
@@ -170,20 +181,31 @@
                 success: function (res) {
                     var status = res['message'];
                     console.log(status);
-                    var s = "<center>";
-                    s += "<li>" + status['name'] + "</li>";
-                    s += "\n";
-                    s += "<li>" + status['email'] + "</li>";
-                    s += "\n";
-                    s += "<li>" + status['hid'] + "</li>";
-                    s += "\n";
-                    s += "<li>" + status['age'] + "</li>";
-                    s += "\n";
-                    s += "<li>" + status['gender'] + "</li>";
-                    s += "\n";
-                    s += "<li>" + status['diagnosis'] + "</li>";
-                    s += "</center>"
-                    document.getElementById('profile').innerHTML = s;
+                    if (res['success']) {
+                        var s = "<center>";
+                        s += "<table border='1px solid'>";
+                        s += "<tr><td>Name</td><td>" + status['name'] + "</td></tr>";
+
+                        s += "<tr><td>Email</td><td>" + status['email'] + "</td></tr>";
+
+                        s += status['hospitalRegistrationNumber'] === undefined ? "" :
+                            "<tr><td>Hospital Registration Number</td><td>" + status[
+                                'hospitalRegistrationNumber'] + "</td></tr>";
+
+                        s += status['role'] === undefined ? "" : "<tr><td>Role</td><td>" + status['role'] +
+                            "</td></tr>";
+
+                        s += status['gender'] === undefined ? "" : "<tr><td>Gender</td><td>" + status[
+                            'gender'] + "</td></tr>";
+
+                        s += status['diagnosis'] === undefined ? "" : "<tr><td>Diagnosis</td><td>" + status[
+                            'diagnosis'] + "</td></tr>";
+                        s += "</table></center>"
+                        document.getElementById('profile').innerHTML = s;
+                    } else {
+                        window.alert(status)
+                        document.getElementById('profile').innerHTML = "";
+                    }
                 }
             })
         }

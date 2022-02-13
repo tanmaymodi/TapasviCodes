@@ -50,16 +50,14 @@
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center">
 
-            <h1 class="logo me-auto"><a href="index.html">CarryLab</a></h1>
+            <h1 class="logo me-auto"><a href="/">CarryLab</a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                    <li><a class="nav-link scrollto" href="#about">About</a></li>
-                    <li><a class="nav-link scrollto" href="#services">Services</a></li>
-
+                    <li><a class="nav-link scrollto active" href="/">Home</a></li>
+                    <li><a class="nav-link scrollto" href="/Shift-Patient">SHift-Paitent</a></li>
                     <li class="dropdown"><a href="#"><span>Log In</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="/patient-profile">Patient Log In</a></li>
@@ -80,8 +78,7 @@
             </nav>
             <!-- .navbar -->
 
-            <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline">Make an</span>
-                Appointment</a>
+
 
         </div>
     </header>
@@ -130,14 +127,14 @@
                 <br>
                 <div class="row d-flex justify-content-center">
                     <div class="col-md-4 form-group">
-                        <input type="password" class="form-control" id="hid" placeholder="Password" data-rule="minlen:4"
-                            data-msg="Please enter at least 4 chars">
+                        <input type="password" class="form-control" id="password" placeholder="Password"
+                            data-rule="minlen:4" data-msg="Please enter at least 4 chars">
                         <div class="validate"></div>
                     </div>
                 </div><br>
 
                 <div class="text-center">
-                    <button href="#" class="appointment-btn scrollto">Register</button>
+                    <button href="#" class="appointment-btn scrollto" onclick="formSubmit()">Register</button>
                 </div>
 
             </div>
