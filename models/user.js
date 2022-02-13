@@ -94,17 +94,9 @@ const patientTransferDetails = new Schema({
         type: String,
         required: [true, "Email of transfering patient is required"]
     },
-    fromName: {
-        type: String,
-        required: [true, "From hospital name of transfering patient is required"]
-    },
     fromId: {
         type: String,
         required: [true, "From hospital id of transfering patient is required"]
-    },
-    toName: {
-        type: String,
-        required: [true, "To hospital name of transfering patient is required"]
     },
     toId: {
         type: String,

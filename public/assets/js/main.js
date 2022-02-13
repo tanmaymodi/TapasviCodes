@@ -1,6 +1,6 @@
 /**
-*   Name: MEDI-CALL - v4.7.1
-*   URL: https://bootstrapmade.com/MEDI-CALL-free-medical-bootstrap-theme/
+* Template Name: Medilab - v4.7.1
+* Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
