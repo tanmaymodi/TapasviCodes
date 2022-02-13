@@ -144,6 +144,10 @@ app.get('/register-patient',(req,res)=>{
     res.render('patientRegistration');
 })
 
+app.get('/register-staff', (req,res)=>{
+    res.render('staffRegistration')
+})
+
 
 
 var server = require('http').createServer(app);

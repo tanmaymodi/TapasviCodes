@@ -3,3 +3,13 @@ npm i consolidate morgan express mustache nodemon mongodb mongoose body-parser
 
 //run project
 npm start
+
+
+
+/  ----  home page  ---- views/index.html
+/patient-profile --- patient profile --- patientprofile.html
+/shift-patient' --- transfer.thml
+/staff-profile --- staffprofile.html
+/register-hospital --- hospital.html
+/register-patient --- patientRegistration.html
+/register-staff --- staffRegistration.html
