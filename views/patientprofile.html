@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Patient SignUp</title>
+    <title>CarryLab</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -28,9 +28,8 @@
     <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-    <!--  Main CSS File -->
+    <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
-    <link href="assets/css/login.css" rel="stylesheet">
 
     <!-- ajax files -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
@@ -40,100 +39,192 @@
 
 <body>
 
-    <!-- <main id="main">
+    <!-- ======= Top Bar ======= -->
+    <div id="topbar" class="d-flex align-items-center fixed-top">
+        <div class="container d-flex justify-content-between">
 
 
-        <div class="wrapper wrapper2" style="width: 550px;">
-            <div class="text-center mt-4 name"><a style="font-size: 25px;" href="s">Patient's Registration form</a>
-            </div>
-            <form class="p-3 mt-3">
-                <div class="form-field d-flex align-items-center"> <span class="far fa-user"></span> <input type="text"
-                        required name="name" id="name" placeholder="Name"> </div>
-                <div class="row">
-                    <div class="col-4">
-                        <div class="form-field d-flex align-items-center"> <span class="far fa-user"></span> <input
-                                type="number" required name="age" id="age" placeholder="Age"> </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-field d-flex align-items-center"> <span class="far fa-user"></span>
-                            <input type="text" required name="gender" id="gender" placeholder="Gender">
-                        </div>
+        </div>
+    </div>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center">
+
+            <h1 class="logo me-auto"><a href="index.html">CarryLab</a></h1>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+            <nav id="navbar" class="navbar order-last order-lg-0">
+                <ul>
+                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+                    <li><a class="nav-link scrollto" href="#about">About</a></li>
+                    <li><a class="nav-link scrollto" href="#services">Services</a></li>
+
+                    <li class="dropdown"><a href="#"><span>Log In</span> <i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="/patient-profile">Patient Log In</a></li>
+                            <li><a href="/staff-profile">Staff Log In</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#"><span>Sign Up</span> <i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="/register-patient">Patient Sign Up</a></li>
+                            <li><a href="/register-staff">Staff Sign Up</a></li>
+                            <li><a href="/register-hospital">Register Hospital</a></li>
+                        </ul>
+                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+            <!-- .navbar -->
+
+            <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline">Make an</span>
+                Appointment</a>
+
+        </div>
+    </header>
+    <!-- End Header -->
+
+
+    <main><br>
+
+
+        <br><br><br>
+
+        <section id="about" class="about">
+            <div class="container-fluid">
+
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-4 form-group">
+                        <input type="text" class="form-control" id="email" placeholder="Email" data-rule="minlen:4"
+                            data-msg="Please enter at least 4 chars">
+                        <div class="validate"></div>
                     </div>
                 </div>
+                <br>
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-4 form-group">
+                        <input type="password" class="form-control" id="password" placeholder="Password"
+                            data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                        <div class="validate"></div>
+                    </div>
+                </div><br>
 
-                <div class="form-field d-flex align-items-center"> <span class="far fa-user"></span> <input type="email"
-                        required name="Email" id="Email" placeholder="Email"> </div>
-                <div class="form-field d-flex align-items-center"> <span class="fas fa-key"></span> <input
-                        type="password" required name="password" id="pwd" placeholder="Password"> </div>
-                <div class="form-field d-flex align-items-center"> <span class="fas fa-key"></span> <input type="text"
-                        required name="diagnosis" id="diagnosis" placeholder="Paitent Current Status/Symptoms"> </div>
-                <button onclick="formSubmit()" class="btn mt-3">Sign up</button>
-            </form>
-            <div class="text-center fs-6"> Already have an account? <a href="./login.html">Sign in</a> </div>
-        </div>
+
+
+                <div class="text-center">
+                    <button href="#" class="appointment-btn scrollto" onclick="formSubmit()">Login</button>
+                </div>
+
+            </div>
+        </section>
 
     </main>
 
 
 
-    <div id="preloader"></div>
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a> -->
-
-
-
-    <!-- give style to this form -->
-    <!-- patient sign In -->
-    <div>
-        <input type="email" id="email" name="email" placeholder="Email" required><br>
-        <input type="password" id="password" name="password" placeholder="Password" required><br>
-        <button onclick="formSubmit()">Submit</button>
+    <div class="contianer-fluid">
+        <div id="profile"></div>
     </div>
+    <!-- ======= Footer ======= -->
+    <footer id=" footer ">
 
-    <h1>Your Profile</h1>
 
-    <div id="profile"></div>
+
+        <div class="container d-md-flex py-4 ">
+
+            <div class="me-md-auto text-center text-md-start ">
+                <div class="copyright ">
+                    &copy; Copyright <strong><span>CarryLab</span></strong>. All Rights Reserved
+                </div>
+
+            </div>
+
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+    <div id="preloader "></div>
+    <a href="# " class="back-to-top d-flex align-items-center justify-content-center "><i
+            class="bi bi-arrow-up-short "></i></a>
+
+
+
+
+
 
     <script>
         function formSubmit() {
+            console.log("asjdc");
             var email = document.getElementById('email').value;
             var password = document.getElementById('password').value;
+            var lo = "<center>Loading...</center>";
+            document.getElementById('profile').innerHTML = lo;
+            var data = {
+                'email': email,
+                'password': password,
+            };
+            console.log("dsc", data);
             $.post({
                 url: '/patientSignIn',
-                data: {
-                    'email': email,
-                    'password': password,
-                },
+                data: data,
                 success: function (res) {
                     var status = res['message'];
                     console.log(status);
-                    var s = "";
-                    s += status['name'];
-                    s += "\n";
-                    s += status['email'];
-                    s += "\n";
-                    s += status['hid'];
-                    s += "\n";
-                    s += status['age'];
-                    s += "\n";
-                    s += status['gender'];
-                    s += "\n";
-                    s += status['diagnosis'];
+                    var s = " ";
+                    if (res['status'] === false) {
+                        console.log(status);
+                        window.alert(status);
+                        document.getElementById('profile').innerHTML = "";
+                        return;
+                    }
+                    s += "<center>";
+                    if (status) {
+                        s += "<h3>" + "Patient details" + "</h3>"
+                        s += status['name'];
+                        s += "<br />";
+                        s += status['email'];
+                        s += "<br />";
+                        s += status['hid'];
+                        s += "<br />";
+                        s += status['age'];
+                        s += "<br />";
+                        s += status['gender'];
+                        s += "<br />";
+                        s += status['diagnosis'];
+                        s += "<br />";
+                    }
 
+                    if (res['rec']) {
+                        status = res['rec'];
+                        s += "<h3>" + "Transfer details" + "</h3>"
+
+                        s += status['fromId'];
+                        s += "<br />";
+                        s += status['toId'];
+                        s += "<br />";
+                        s += status['date'];
+                        s += "<br />";
+                        s += status['diagnosis'];
+                        s += "<br />";
+                    }
+
+                    s += "</center>";
                     document.getElementById('profile').innerHTML = s;
                 }
             })
         }
     </script>
     <!-- Vendor JS Files -->
-    <script src="assets/vendor/purecounter/purecounter.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/purecounter/purecounter.js "></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js "></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js "></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js "></script>
+    <script src="assets/vendor/php-email-form/validate.js "></script>
 
-    <!--  Main JS File -->
-    <script src="assets/js/main.js"></script>
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js "></script>
 
 </body>
 
