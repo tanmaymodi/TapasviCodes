@@ -29,15 +29,16 @@ app.post('/patientSignUp', async(req,res)=>{
     try{
         console.log(req.body);
         var d = req.body;
+        //console.log(d);
         var email = d['email'];
-        const r1 = await patientDetails.findOne({email:email});
+        const r1 = await PatientDetails.findOne({email:email});
         if(r1){
-            res.render('fail');
+            res.send({message:"email already exits please use different email"});
         }
-        else{
-            var insertingObject = new PatientDetails(d)
-            await insertingObject.save();
-            res.render('success');
+        else{      
+            // var insertingObject = new PatientDetails(d)
+            // await insertingObject.save();
+            res.send({message:"sign up successful"});
         }
     }
     catch(err){
@@ -54,12 +55,12 @@ app.post('/staffSignUp',async(req,res)=>{
         var email = d['email'];
         const r1 = await StaffDetails.findOne({email:email});
         if(r1){
-            res.render('fail');
+            res.send({message:"SignUP failed email already exits"});
         }
         else{
             var insertingObject = new StaffDetails(d)
             await insertingObject.save();
-            res.render('success');
+            res.send({message:"Sign UP successful"});
         }
     }
     catch(err){
@@ -76,12 +77,12 @@ app.post('/patientTransferForm',async(req,res)=>{
         var email = d['email'];
         const r1 = await PatientTransferDetails.findOne({email:email});
         if(r1){
-            var insertingObject = new PatientTransferDetails(d)
-            await insertingObject.save();
-            res.render('success');
+            //var insertingObject = new PatientTransferDetails(d)
+            //await insertingObject.save();
+            res.send({message:"Patient transfer form filled sucessfully"});
         }
         else{
-            res.render('fail');
+            res.send({message:"Try to fill the form with registered email"})
         }
     }
     catch(err){
@@ -105,7 +106,7 @@ app.post('/hospitalSignUp',async(req,res)=>{
         else{
             var insertingObject = new HospitalDetails(d);
             await insertingObject.save();   
-            res.send({message:"OOOKKKK"});
+            res.send({message:"Hospital Registered Sucessfully"});
         }
     }
     catch(err){

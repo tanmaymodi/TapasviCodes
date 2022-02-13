@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Login - MEDI-CALL</title>
+    <title>Patient SignUp</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -31,58 +31,100 @@
     <!--  Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/login.css" rel="stylesheet">
+
+    <!-- ajax files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 
 <body>
 
+    <!-- <main id="main">
 
-
-    <main id="main">
 
         <div class="wrapper wrapper2" style="width: 550px;">
             <div class="text-center mt-4 name"><a style="font-size: 25px;" href="s">Patient's Registration form</a>
             </div>
             <form class="p-3 mt-3">
                 <div class="form-field d-flex align-items-center"> <span class="far fa-user"></span> <input type="text"
-                        required" name="name" id="name" placeholder="Name"> </div>
+                        required name="name" id="name" placeholder="Name"> </div>
                 <div class="row">
                     <div class="col-4">
                         <div class="form-field d-flex align-items-center"> <span class="far fa-user"></span> <input
-                                type="number" required" name="age" id="age" placeholder="Age"> </div>
+                                type="number" required name="age" id="age" placeholder="Age"> </div>
                     </div>
                     <div class="col">
                         <div class="form-field d-flex align-items-center"> <span class="far fa-user"></span>
-                            <input type="text" required" name="gender" id="gender" placeholder="Male/Female/NA">
-                            <!-- <select>
-                                <option>hi</option>
-                                <option>hi</option>
-                            </select>  -->
+                            <input type="text" required name="gender" id="gender" placeholder="Gender">
                         </div>
                     </div>
                 </div>
-                <div class="form-field d-flex align-items-center"> <span class="fas fa-key"></span> <input type="file"
-                        required name="CONFIRMpassword" id="pwd" placeholder="Confirm Password"> </div>
 
                 <div class="form-field d-flex align-items-center"> <span class="far fa-user"></span> <input type="email"
-                        required" name="Email" id="Email" placeholder="Email"> </div>
+                        required name="Email" id="Email" placeholder="Email"> </div>
                 <div class="form-field d-flex align-items-center"> <span class="fas fa-key"></span> <input
                         type="password" required name="password" id="pwd" placeholder="Password"> </div>
-                <div class="form-field d-flex align-items-center"> <span class="fas fa-key"></span> <input
-                        type="password" required name="CONFIRMpassword" id="pwd" placeholder="Confirm Password"> </div>
-
-                <button class="btn mt-3">Sign up</button>
+                <div class="form-field d-flex align-items-center"> <span class="fas fa-key"></span> <input type="text"
+                        required name="diagnosis" id="diagnosis" placeholder="Paitent Current Status/Symptoms"> </div>
+                <button onclick="formSubmit()" class="btn mt-3">Sign up</button>
             </form>
-            <div class="text-center fs-6"> Already logged in? <a href="./login.html">Sign in</a> </div>
+            <div class="text-center fs-6"> Already have an account? <a href="./login.html">Sign in</a> </div>
         </div>
 
-    </main><!-- End #main -->
+    </main>
 
 
 
     <div id="preloader"></div>
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
+            class="bi bi-arrow-up-short"></i></a> -->
 
+
+
+    <!-- give style to this form -->
+    <!-- patient sign up -->
+    <div>
+        <input type="text" id="name" name="name" placeholder="Nmae of patient" required><br>
+        <input type="number" id="age" name="age" placeholder="Age of patient" required min="0" max="120" step="1"><br>
+        <select id="gender" name="gender" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="trans">Trans</option>
+        </select><br>
+        <input type="email" id="email" name="email" placeholder="Email" required><br>
+        <input type="password" id="password" name="password" placeholder="Password" required><br>
+        <input type="text" id="diagnosis" name="diagnosis" placeholder="Remark about patient"><br>
+        <button onclick="formSubmit()">Submit</button>
+    </div>
+
+
+    <script>
+        function formSubmit() {
+            var name = document.getElementById('name').value;
+            var age = document.getElementById('age').value;
+            var gender = document.getElementById('gender').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var diagnosis = document.getElementById('diagnosis').value;
+            console.log(name, age, gender, email, password);
+            $.post({
+                url: '/patientSignUp',
+                data: {
+                    'name': name,
+                    'age': age,
+                    'gender': gender,
+                    'email': email,
+                    'password': password,
+                    'diagnosis': diagnosis
+                },
+                success: function (res) {
+                    var status = res['message'];
+                    window.alert(status);
+                }
+            })
+        }
+    </script>
     <!-- Vendor JS Files -->
     <script src="assets/vendor/purecounter/purecounter.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

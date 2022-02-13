@@ -2,17 +2,89 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Patient SignUp</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!--  Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/login.css" rel="stylesheet">
+
+    <!-- ajax files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 
 <body>
-    <h1>Transfer Patient</h1>
 
+    <!-- <main id="main">
+
+
+        <div class="wrapper wrapper2" style="width: 550px;">
+            <div class="text-center mt-4 name"><a style="font-size: 25px;" href="s">Patient's Registration form</a>
+            </div>
+            <form class="p-3 mt-3">
+                <div class="form-field d-flex align-items-center"> <span class="far fa-user"></span> <input type="text"
+                        required name="name" id="name" placeholder="Name"> </div>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-field d-flex align-items-center"> <span class="far fa-user"></span> <input
+                                type="number" required name="age" id="age" placeholder="Age"> </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-field d-flex align-items-center"> <span class="far fa-user"></span>
+                            <input type="text" required name="gender" id="gender" placeholder="Gender">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-field d-flex align-items-center"> <span class="far fa-user"></span> <input type="email"
+                        required name="Email" id="Email" placeholder="Email"> </div>
+                <div class="form-field d-flex align-items-center"> <span class="fas fa-key"></span> <input
+                        type="password" required name="password" id="pwd" placeholder="Password"> </div>
+                <div class="form-field d-flex align-items-center"> <span class="fas fa-key"></span> <input type="text"
+                        required name="diagnosis" id="diagnosis" placeholder="Paitent Current Status/Symptoms"> </div>
+                <button onclick="formSubmit()" class="btn mt-3">Sign up</button>
+            </form>
+            <div class="text-center fs-6"> Already have an account? <a href="./login.html">Sign in</a> </div>
+        </div>
+
+    </main>
+
+
+
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a> -->
+
+
+
+    <!-- give style to this form -->
     <!-- patient transfer form -->
-    <form action="/patientTransferForm" method="POST">
+    <div>
         <input type="text" id="name" name="name" placeholder="Nmae of Patient" required><br>
         <input type="email" id="emailOfPatient" name="emailOfPatient" placeholder="Email of Patient" required><br>
         <input type="text" id="fromName" name="fromName" placeholder="Name of Current Hospital" required><br>
@@ -21,9 +93,48 @@
         <input type="text" id="toId" name="toId" placeholder="Registration Number of Transfering Hospital" required><br>
         <input type="date" id="date" name="date"><br>
         <textarea type="text" id="diagnosis" name="diagnosis" placeholder="Reports of patient" required></textarea><br>
-        <button type="submit">Submit</button>
-    </form>
-    <br>
+        <button onclick="formSubmit()">Submit</button>
+    </div>
+
+
+    <script>
+        function formSubmit() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('emailOfPatient').value;
+            var fn = document.getElementById('fromName').value;
+            var fid = document.getElementById('fromId').value;
+            var tn = document.getElementById('toName').value;
+            var tid = document.getElementById('toId').value;
+            var date = document.getElementById('date').value;
+            var diagnosis = document.getElementById('diagnosis').value;
+            $.post({
+                url: '/patientTransferForm',
+                data: {
+                    'name': name,
+                    'emailOfPatient': email,
+                    'fromName': fn,
+                    'fromId': fid,
+                    'toName': tn,
+                    'toId': tid,
+                    'date': date,
+                    'diagnosis': diagnosis
+                },
+                success: function (res) {
+                    var status = res['message'];
+                    window.alert(status);
+                }
+            })
+        }
+    </script>
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/purecounter/purecounter.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+
+    <!--  Main JS File -->
+    <script src="assets/js/main.js"></script>
 
 </body>
 
