@@ -94,6 +94,7 @@
         </select><br>
         <input type="email" id="email" name="email" placeholder="Email" required><br>
         <input type="password" id="password" name="password" placeholder="Password" required><br>
+        <input type="text" id="hid" name="hid" placeholder="Hospital Id" required><br>
         <input type="text" id="diagnosis" name="diagnosis" placeholder="Remark about patient"><br>
         <button onclick="formSubmit()">Submit</button>
     </div>
@@ -106,6 +107,7 @@
             var gender = document.getElementById('gender').value;
             var email = document.getElementById('email').value;
             var password = document.getElementById('password').value;
+            var hid = document.getElementById('hid').value;
             var diagnosis = document.getElementById('diagnosis').value;
             console.log(name, age, gender, email, password);
             $.post({
@@ -116,6 +118,7 @@
                     'gender': gender,
                     'email': email,
                     'password': password,
+                    'hid': hid,
                     'diagnosis': diagnosis
                 },
                 success: function (res) {

@@ -36,8 +36,8 @@ app.post('/patientSignUp', async(req,res)=>{
             res.send({message:"email already exits please use different email"});
         }
         else{      
-            // var insertingObject = new PatientDetails(d)
-            // await insertingObject.save();
+            var insertingObject = new PatientDetails(d)
+            await insertingObject.save();
             res.send({message:"sign up successful"});
         }
     }
@@ -100,8 +100,11 @@ app.post('/hospitalSignUp',async(req,res)=>{
         var id = d['email'];
         const r1 = await HospitalDetails.findOne({hid:hid});
         const r2 = await HospitalDetails.findOne({id:id});
-        if(r1 || r2){
-            res.send({message:"email or registration number already exits"});
+        if(r2){
+            res.send({message:"email already exits"});
+        }
+        else if(r1){
+            res.send({message:"registration number already exits"})
         }
         else{
             var insertingObject = new HospitalDetails(d);
@@ -146,6 +149,28 @@ app.get('/register-patient',(req,res)=>{
 
 app.get('/register-staff', (req,res)=>{
     res.render('staffRegistration')
+})
+
+
+app.post('/patientSignIn',async(req,res)=>{
+    try{
+
+        var d = req.body;
+        console.log(d);
+        const result = await PatientDetails.findOne({d:d});
+        console.log(result);
+        if(result){
+            res.send({message:result});
+        }
+        else{
+            res.send({message:"Invalid email or password"});
+        }
+    }
+    catch(err){
+        console.log("Err -- ", err);
+        res.redirect(__dirname+'/views/index.html')
+        return; 
+    }
 })
 
 

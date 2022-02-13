@@ -22,6 +22,10 @@ const patientDetails = new Schema({
         type: String,
         required: [true, "Password of patient is required"]
     },
+    hid:{
+        type: String,
+        required: [true, "Cureent Hospital Name is required"]
+    },
     diagnosis: {
         type: String,
         required: [false, "Symptomps and diagnostics of the patient"]
